@@ -15,9 +15,23 @@ An upgraded port scanner built for ethical hackers and cybersecurity students.
 - Threading
 
 ## 📌 Run Command
-python advanced_port_scanner.py
+python port_scanner.py
 
 ## 🔮 Future Improvements
 - GUI version with Tkinter
 - Export results to text file
 - Add CVE database lookup
+
+## 📂 File Structure
+Port Scanner/
+
+│── port_scanner.py
+
+│── README.md
+
+
+## 📌 Future Upgrades
+- Add color-coded results
+- Export results to text file
+- Automatic service detection
+- Dark/Light theme switch
