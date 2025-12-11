@@ -14,13 +14,12 @@ A Python tool that analyzes password strength and provides security improvement 
 python port_scanner.py
 
 ## 📂 File Structure
-Password Strengt Checker/
-
-│── password_streng_checker/
-
+Password Strengt Checker/  
+│── password_streng_checker/  
 │── README.md
 
 ## 📌 Future Improvements
 - Add GUI (Tkinter)
 - Add password breach checking (using local dataset)
+
 - Add color-coded output
