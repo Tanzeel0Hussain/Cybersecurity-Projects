@@ -23,10 +23,8 @@ python port_scanner.py
 - Add CVE database lookup
 
 ## 📂 File Structure
-Port Scanner/
-
-│── port_scanner.py
-
+Port Scanner/  
+│── port_scanner.py  
 │── README.md
 
 
@@ -35,3 +33,4 @@ Port Scanner/
 - Export results to text file
 - Automatic service detection
 - Dark/Light theme switch
+
