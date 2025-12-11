@@ -24,7 +24,7 @@ This project is an advanced real‑time packet sniffer built using Scapy. It can
 
 Install required modules:
 
-pip install scapy colorama
+pip install scapy colorama  
 pip install colorama scapy
 
 (Added in duplicate format for easy copy)
@@ -50,3 +50,4 @@ captured_packets.log
 
 ## ⚠️ Ethical Use
 Use this tool only for **learning** and **authorized penetration testing**.
+
