@@ -6,11 +6,11 @@ This project is an advanced real‑time packet sniffer built using Scapy. It can
 
 ## 🚀 Features
 - Live packet capture (like mini‑Wireshark)
-- Detects:
+- Detects:  
   ✔ TCP  
   ✔ UDP  
   ✔ ICMP  
-- Shows:
+- Shows:  
   ✔ Source IP  
   ✔ Destination IP  
   ✔ Protocol  
@@ -50,4 +50,5 @@ captured_packets.log
 
 ## ⚠️ Ethical Use
 Use this tool only for **learning** and **authorized penetration testing**.
+
 
