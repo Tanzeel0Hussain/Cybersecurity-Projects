@@ -31,10 +31,8 @@ Follow these steps:
 
 ---
 ## 📂 File Structure
-GUI Port Scanner/ 
-
-│── gui_port_scanner.py 
-
+GUI Port Scanner/  
+│── gui_port_scanner.py  
 │── README.md
 
 ---
@@ -45,3 +43,4 @@ GUI Port Scanner/
 - Automatic service detection  
 - Dark/Light theme toggle  
 - Add IP validation & warning popups
+
