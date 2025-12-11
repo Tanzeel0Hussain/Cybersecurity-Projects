@@ -38,7 +38,7 @@ A beginner-friendly tool to find hidden directories using a wordlist.
 
 ## 4️⃣ **Advanced Directory Bruteforcer**
 A professional directory brute‑forcer with status code detection, colors & multithreading.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [Advanced Directory Bruteforcer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/c2133549b45d5174ace3a0acc95e351df50b676b/Advanced%20Directory%20Bruteforcer%20(Copy%E2%80%91Paste%20Ready))
 
 ---
 
