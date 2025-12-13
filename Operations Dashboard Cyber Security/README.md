@@ -54,28 +54,28 @@ It allows users to:
 
 SOC-Dashboard/
 │
-├── app.py                   # Main Flask app
-├── auth.py                  # Authentication system
-├── log_analysis.py          # Log parsing & analysis
-├── risk_engine.py           # Threat level calculations
-├── alert_system.py          # High-risk alerts
-├── database.db              # SQLite database for users
+├── app.py                   # Main Flask app   
+├── auth.py                  # Authentication system   
+├── log_analysis.py          # Log parsing & analysis   
+├── risk_engine.py           # Threat level calculations   
+├── alert_system.py          # High-risk alerts   
+├── database.db              # SQLite database for users   
 ├── requirements.txt
-│
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── upload_logs.html
-│   ├── threat_report.html
-│   └── alerts.html
-│
-├── static/
-│   └── style.css
-├── uploads/                 # Uploaded log files
-├── reports/                 # Analysis & threat reports
-├── alerts/                  # Alert logs
-└── README.md
+│   
+├── templates/   
+│   ├── login.html   
+│   ├── register.html   
+│   ├── dashboard.html   
+│   ├── upload_logs.html   
+│   ├── threat_report.html   
+│   └── alerts.html   
+│   
+├── static/   
+│   └── style.css   
+├── uploads/                 # Uploaded log files   
+├── reports/                 # Analysis & threat reports   
+├── alerts/                  # Alert logs   
+└── README.md   
 
 ---
 
@@ -172,4 +172,5 @@ http://127.0.0.1:5000
 - Phase 5: Interactive visual charts & graphs
 - Email / push notifications for high-risk alerts
 - Multi-user role management
+
 - Threat trend analysis over time
