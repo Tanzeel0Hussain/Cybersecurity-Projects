@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alerts - SOC Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h2>High-Risk Alerts</h2>
+
+{% if alerts %}
+<ul>
+{% for alert in alerts %}
+<li style="color:red">{{ alert }}</li>
+{% endfor %}
+</ul>
+<p>{{ message }}</p>
+{% else %}
+<p>No high-risk alerts detected.</p>
+{% endif %}
+
+<a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

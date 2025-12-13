@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Threat Report - SOC Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h2>Threat Analysis Report</h2>
+
+<h3>IP Threat Levels</h3>
+<table border="1">
+<tr><th>IP</th><th>Attempts</th><th>Level</th></tr>
+{% for ip, info in threat["IPs"].items() %}
+<tr>
+<td>{{ ip }}</td>
+<td>{{ info.attempts }}</td>
+<td style="color:{% if info.level=='HIGH' %}red{% elif info.level=='MEDIUM' %}orange{% else %}green{% endif %}">{{ info.level }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>User Threat Levels</h3>
+<table border="1">
+<tr><th>User</th><th>Attempts</th><th>Level</th></tr>
+{% for user, info in threat["Users"].items() %}
+<tr>
+<td>{{ user }}</td>
+<td>{{ info.attempts }}</td>
+<td style="color:{% if info.level=='HIGH' %}red{% elif info.level=='MEDIUM' %}orange{% else %}green{% endif %}">{{ info.level }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

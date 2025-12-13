@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Logs - SOC Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h2>Upload Log File for Analysis</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="logfile" required>
+    <button>Upload & Analyze</button>
+</form>
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+<a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>
