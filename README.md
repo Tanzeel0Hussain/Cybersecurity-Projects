@@ -20,19 +20,19 @@ Below are all the completed projects with short descriptions & links to their fo
 
 ## 1️⃣ **Port Scanner**
 A simple multithreaded console-based port scanner.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [Port Scanner](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Port%20Scanner)
 
 ---
 
 ## 2️⃣ **GUI Port Scanner**
 A Tkinter-based graphical port scanner with real-time output.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [GUI Port Scanner](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/GUI%20Port%20Scanner)
 
 ---
 
 ## 3️⃣ **Directory Bruteforcer (Basic)**
 A beginner-friendly tool to find hidden directories using a wordlist.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [Directory Bruteforcer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Directory%20Bruteforcer)
 
 ---
 
@@ -44,13 +44,13 @@ A professional directory brute‑forcer with status code detection, colors & mul
 
 ## 5️⃣ **Advanced Packet Sniffer**
 A real-time packet sniffer (Wireshark‑style) that captures and logs network packets.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [Advanced Packet Sniffer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Advanced%20Packet%20Sniffer)
 
 ---
 
 ## 6️⃣ **Password Strength Checker**
 AI‑style logic to test password strength with color-coded output.  
-👉 **Project Link:** YOUR_LINK_HERE
+👉 **Project Link:** [Password Strength Checker](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Password%20Strength%20Checker%20(AI-Style%20Logic%20%2B%20Color%20Output))
 
 ---
 
