@@ -14,7 +14,7 @@ This repository is perfect for:
 # 📁 Project Index
 
 Below are all the completed projects with short descriptions & links to their folders.  
-(Replace "YOUR_LINK_HERE" with your actual GitHub project links.)
+👉 **Project Link:** [All Cybersecurity Projects](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects)
 
 ---
 
@@ -66,7 +66,7 @@ AI‑style logic to test password strength with color-coded output.
 ---
 
 # ⚠️ Legal Disclaimer
-These tools are made **only** for:
+These tools are made **only** for:  
 ✔ Educational use  
 ✔ Lab testing  
 ✔ Authorized penetration testing  
@@ -82,7 +82,4 @@ Misuse for illegal purposes is strictly prohibited.
 - Log Analyzer  
 - Password Attacker  
 
----
 
-🔥 **This README is your main repo homepage. Just copy → paste → replace project links.**  
-Agar chaho to main isme **badges**, **icons**, **banner**, **logo**, ya **color theme** bhi add kar sakta hoon!
