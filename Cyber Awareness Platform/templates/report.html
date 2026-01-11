@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Report</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<h2>Security Risk Report</h2>
+
+<p><strong>Risk Score:</strong> {{ score }}</p>
+<p><strong>Risk Level:</strong> 
+<span style="color:{{ color }}">{{ level }}</span></p>
+
+<h3>Recommendations:</h3>
+<ul>
+    <li>Use strong unique passwords</li>
+    <li>Enable 2FA</li>
+    <li>Avoid suspicious links</li>
+    <li>Keep your system updated</li>
+</ul>
+
+<a href="/" class="btn">Back to Home</a>
+
+</body>
+</html>

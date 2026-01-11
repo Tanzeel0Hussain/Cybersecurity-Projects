@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Assessment</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<h2>Cyber Security Risk Assessment</h2>
+
+<form action="/report" method="POST">
+
+<p>1. Do you reuse passwords?</p>
+<select name="q">
+    <option value="3">Yes</option>
+    <option value="0">No</option>
+</select>
+
+<p>2. Do you use Two-Factor Authentication?</p>
+<select name="q">
+    <option value="0">Yes</option>
+    <option value="2">No</option>
+</select>
+
+<p>3. Do you click unknown links?</p>
+<select name="q">
+    <option value="3">Yes</option>
+    <option value="0">No</option>
+</select>
+
+<p>4. Do you update your system regularly?</p>
+<select name="q">
+    <option value="0">Yes</option>
+    <option value="2">No</option>
+</select>
+
+<br><br>
+<button type="submit" class="btn">Generate Report</button>
+
+</form>
+
+</body>
+</html>
