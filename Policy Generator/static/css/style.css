@@ -1,0 +1,18 @@
+body {
+    font-family: Arial;
+    background: #020617;
+    color: #e5e7eb;
+    text-align: center;
+    padding: 40px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 8px;
+}
+
+pre {
+    background: #0f172a;
+    padding: 20px;
+    text-align: left;
+}

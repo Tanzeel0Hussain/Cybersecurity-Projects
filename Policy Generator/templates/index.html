@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Policy Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<h1>Cyber Security Policy Generator</h1>
+
+<form action="/generate" method="POST">
+    <input type="text" name="company" placeholder="Company Name" required>
+    <input type="text" name="industry" placeholder="Industry" required>
+    <select name="size">
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Enterprise</option>
+    </select>
+    <button type="submit">Generate Policy</button>
+</form>
+
+</body>
+</html>
