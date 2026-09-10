@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Cyber Security Awareness Platform</title>
+  <desc id="desc">A dark cybersecurity banner with shield and risk assessment theme.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#102a43"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" rx="28" fill="url(#bg)"/>
+  <circle cx="170" cy="180" r="105" fill="#0ea5e9" opacity="0.12"/>
+  <path d="M170 82 245 112v62c0 56-31 95-75 116-44-21-75-60-75-116v-62z" fill="none" stroke="#38bdf8" stroke-width="10"/>
+  <path d="m137 181 23 23 47-52" fill="none" stroke="#22c55e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="325" y="150" fill="#f8fafc" font-family="Arial, sans-serif" font-size="54" font-weight="700">Cyber Security Awareness</text>
+  <text x="325" y="215" fill="#38bdf8" font-family="Arial, sans-serif" font-size="35" font-weight="600">&amp; Risk Assessment Platform</text>
+  <text x="325" y="270" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="24">Learn safer habits • Measure risk • Get practical recommendations</text>
+</svg>
