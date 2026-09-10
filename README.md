@@ -8,21 +8,21 @@ A curated collection of **15 cybersecurity learning projects** by **Tanzeel Huss
 
 | # | Project | Focus | Source | Live Showcase |
 |---|---|---|---|---|
-| 1 | Port Scanner | Authorized TCP visibility | [Code](./Port%20Scanner/) | [Open](./project.html?id=port-scanner) |
-| 2 | GUI Port Scanner | Desktop network utility | [Code](./GUI%20Port%20Scanner/) | [Open](./project.html?id=gui-port-scanner) |
-| 3 | Directory Bruteforcer | Authorized content discovery | [Code](./Directory%20Bruteforcer/) | [Open](./project.html?id=directory-bruteforcer) |
-| 4 | Advanced Directory Bruteforcer | Controlled concurrent discovery | [Code](./Advanced%20Directory%20Bruteforcer%20%28Copy%E2%80%91Paste%20Ready%29/) | [Open](./project.html?id=advanced-directory-bruteforcer) |
-| 5 | Advanced Packet Sniffer | Defensive packet metadata | [Code](./Advanced%20Packet%20Sniffer/) | [Open](./project.html?id=packet-sniffer) |
-| 6 | Password Strength Checker | Password awareness | [Code](./Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) | [Open](./project.html?id=password-strength) |
-| 7 | Advanced Network Mapper | Authorized network inventory | [Code](./Advanced%20Network%20Mapper/) | [Open](./project.html?id=network-mapper) |
-| 8 | Login Bruteforce Simulator | Local authentication simulation | [Code](./Login%20Bruteforce%20Simulator/) | [Open](./project.html?id=login-simulator) |
-| 9 | Password Cracker | Offline hash-learning demo | [Code](./Password%20Cracker/) | [Open](./project.html?id=password-cracker) |
-| 10 | Log Analyzer | Blue Team / SOC log analysis | [Code](./Log%20Analyzer/) | [Open](./project.html?id=log-analyzer) |
-| 11 | Vulnerability Scanner | Defensive web checks | [Code](./Vulnerability%20Scanner/) | [Open](./project.html?id=vulnerability-scanner) |
-| 12 | Password Policy Auditor | Security policy validation | [Code](./Password%20Policy%20Auditor/) | [Open](./project.html?id=password-policy) |
-| 13 | Cyber Awareness Platform | Awareness risk assessment | [Code](./Cyber%20Awareness%20Platform/) | [Open](./project.html?id=cyber-awareness) |
-| 14 | Policy Generator | GRC / policy drafting | [Code](./Policy%20Generator/) | [Open](./project.html?id=policy-generator) |
-| 15 | Operations Dashboard Cyber Security | SOC dashboard | [Code](./Operations%20Dashboard%20Cyber%20Security/) | [Open](./project.html?id=soc-dashboard) |
+| 1 | Port Scanner | Authorized TCP visibility | [Code](./Port%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=port-scanner) |
+| 2 | GUI Port Scanner | Desktop network utility | [Code](./GUI%20Port%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=gui-port-scanner) |
+| 3 | Directory Bruteforcer | Authorized content discovery | [Code](./Directory%20Bruteforcer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=directory-bruteforcer) |
+| 4 | Advanced Directory Bruteforcer | Controlled concurrent discovery | [Code](./Advanced%20Directory%20Bruteforcer%20%28Copy%E2%80%91Paste%20Ready%29/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=advanced-directory-bruteforcer) |
+| 5 | Advanced Packet Sniffer | Defensive packet metadata | [Code](./Advanced%20Packet%20Sniffer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=packet-sniffer) |
+| 6 | Password Strength Checker | Password awareness | [Code](./Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-strength) |
+| 7 | Advanced Network Mapper | Authorized network inventory | [Code](./Advanced%20Network%20Mapper/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=network-mapper) |
+| 8 | Login Bruteforce Simulator | Local authentication simulation | [Code](./Login%20Bruteforce%20Simulator/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=login-simulator) |
+| 9 | Password Cracker | Offline hash-learning demo | [Code](./Password%20Cracker/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-cracker) |
+| 10 | Log Analyzer | Blue Team / SOC log analysis | [Code](./Log%20Analyzer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=log-analyzer) |
+| 11 | Vulnerability Scanner | Defensive web checks | [Code](./Vulnerability%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=vulnerability-scanner) |
+| 12 | Password Policy Auditor | Security policy validation | [Code](./Password%20Policy%20Auditor/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-policy) |
+| 13 | Cyber Awareness Platform | Awareness risk assessment | [Code](./Cyber%20Awareness%20Platform/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=cyber-awareness) |
+| 14 | Policy Generator | GRC / policy drafting | [Code](./Policy%20Generator/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=policy-generator) |
+| 15 | Operations Dashboard Cyber Security | SOC dashboard | [Code](./Operations%20Dashboard%20Cyber%20Security/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=soc-dashboard) |
 
 ## 🧰 Technologies
 
