@@ -1,46 +1,25 @@
 # 🖥️ GUI Port Scanner
 
-A simple and clean graphical port scanner built using Python Tkinter.  
-Perfect for students learning networking and cybersecurity.
+A Tkinter desktop interface for authorized TCP port scanning.
 
----
+## Features
+- Simple graphical interface
+- Target IP and custom port range
+- Bounded worker threads to avoid creating one thread per port
+- Real-time open-port results
+- Banner attempt with graceful error handling
+- Input validation
 
-## 🚀 Features
-- User-friendly interface
-- Fast multi-threaded scanning
-- Scrollable results window
-- Banner grabbing
-- Easy to use
-- Dark-themed clean UI
+## Run
 
----
+```bash
+python gui_port_scanner.py
+```
 
-## 🛠️ Requirements
-- Python 3.x  
-- No external libraries needed (Tkinter comes pre-installed)
+Tkinter and socket are part of the standard Python distribution on most desktop installations. On some Linux systems you may need the OS package for Tk.
 
----
+## Notes
+The scanner reports reachable TCP ports. A reachable port does not automatically mean a service is vulnerable.
 
-## ▶️ How to Run
-
-Follow these steps:
-
-1. Download or clone the repository  
-2. Open the folder **GUI Port Scanner**  
-3. Run the script using this command: python gui_port_scanner.py
-
----
-## 📂 File Structure
-GUI Port Scanner/  
-│── gui_port_scanner.py  
-│── README.md
-
----
-
-## 📌 Future Upgrades
-- Add color-coded results  
-- Export scan results to a text file  
-- Automatic service detection  
-- Dark/Light theme toggle  
-- Add IP validation & warning popups
-
+## Ethical use
+Use only on systems you own or have explicit permission to assess.

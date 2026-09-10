@@ -1,93 +1,74 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from urllib.parse import urljoin
 import requests
-import threading
-import queue
-from colorama import Fore, Style, init
+from colorama import Fore, init
 
 init(autoreset=True)
 
-print(Fore.CYAN + """
-=========================================
-      ADVANCED DIRECTORY BRUTEFORCER
-=========================================
-""")
-
-found = []
-q = queue.Queue()
-
-# -----------------------------
-# Load wordlist into Queue
-# -----------------------------
-def load_wordlist(wordlist):
-    with open(wordlist, "r") as file:
-        for line in file:
-            q.put(line.strip())
+FOUND_CODES = {200, 301, 302, 403}
+DEFAULT_THREADS = 20
+TIMEOUT = 5
 
 
-# -----------------------------
-# Bruteforce Function
-# -----------------------------
-def scan_url(base_url):
-    while not q.empty():
-        path = q.get()
-        url = f"{base_url}/{path}"
-
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Pentester-Tool)"
-        }
-
-        try:
-            response = requests.get(url, headers=headers, timeout=3)
-
-            if response.status_code in [200, 301, 302, 403]:
-
-                if response.status_code == 200:
-                    print(Fore.GREEN + f"[FOUND 200] {url}")
-                elif response.status_code == 301 or response.status_code == 302:
-                    print(Fore.YELLOW + f"[REDIRECT {response.status_code}] {url}")
-                elif response.status_code == 403:
-                    print(Fore.MAGENTA + f"[FORBIDDEN 403] {url}")
-
-                found.append(f"{url} [{response.status_code}]")
-
-            else:
-                print(Fore.RED + f"[{response.status_code}] {url}")
-
-        except:
-            print(Fore.RED + f"[ERROR] {url}")
-
-        q.task_done()
+def scan_url(session, base_url, path):
+    url = urljoin(base_url.rstrip("/") + "/", path.lstrip("/"))
+    try:
+        response = session.get(url, timeout=TIMEOUT, allow_redirects=False)
+        return url, response.status_code
+    except requests.RequestException:
+        return url, None
 
 
-# -----------------------------
-# Start Bruteforce
-# -----------------------------
-def start_attack(base_url, wordlist, threads_count):
-    load_wordlist(wordlist)
+def start_scan(base_url, wordlist, threads_count):
+    wordlist_path = Path(wordlist)
+    if not wordlist_path.is_file():
+        print(Fore.RED + f"[!] Wordlist not found: {wordlist}")
+        return
 
-    threads = []
+    paths = [line.strip() for line in wordlist_path.read_text(encoding="utf-8", errors="ignore").splitlines() if line.strip()]
+    if not paths:
+        print(Fore.RED + "[!] Wordlist is empty.")
+        return
 
-    for _ in range(threads_count):
-        t = threading.Thread(target=scan_url, args=(base_url,))
-        t.daemon = True
-        threads.append(t)
-        t.start()
+    threads_count = max(1, min(threads_count, 100))
+    found = []
 
-    q.join()
+    with requests.Session() as session:
+        session.headers.update({"User-Agent": "Authorized-Security-Lab/1.0"})
+        with ThreadPoolExecutor(max_workers=threads_count) as executor:
+            futures = [executor.submit(scan_url, session, base_url, path) for path in paths]
+            for future in as_completed(futures):
+                url, status = future.result()
+                if status in FOUND_CODES:
+                    if status == 200:
+                        color = Fore.GREEN
+                    elif status in {301, 302}:
+                        color = Fore.YELLOW
+                    else:
+                        color = Fore.MAGENTA
+                    print(color + f"[{status}] {url}")
+                    found.append((url, status))
 
-    # Save results
-    with open("advanced_found_directories.txt", "w") as file:
-        for item in found:
-            file.write(item + "\n")
+    with open("advanced_found_directories.txt", "w", encoding="utf-8") as file:
+        for url, status in sorted(found):
+            file.write(f"{url} [{status}]\n")
 
-    print(Fore.CYAN + "\nScan Completed! Results saved to advanced_found_directories.txt\n")
+    print(Fore.CYAN + f"\nScan completed. {len(found)} path(s) saved to advanced_found_directories.txt\n")
 
 
-# -----------------------------
-# Main
-# -----------------------------
 if __name__ == "__main__":
-    base_url = input("Enter target URL (e.g., https://example.com): ").strip().rstrip("/")
-    wordlist = input("Enter wordlist filename: ").strip()
-    threads_count = int(input("Threads to use (10 recommended): "))
+    print(Fore.CYAN + "=== ADVANCED DIRECTORY DISCOVERY TOOL ===")
+    print("Use only on systems you own or are explicitly authorized to test.\n")
 
-    start_attack(base_url, wordlist, threads_count)
+    base_url = input("Enter target URL (e.g., https://example.com): ").strip()
+    wordlist = input("Enter wordlist filename: ").strip()
+
+    if not base_url.startswith(("http://", "https://")):
+        print(Fore.RED + "[!] URL must start with http:// or https://")
+    else:
+        try:
+            threads_count = int(input(f"Threads to use ({DEFAULT_THREADS} recommended, max 100): ") or DEFAULT_THREADS)
+        except ValueError:
+            threads_count = DEFAULT_THREADS
+        start_scan(base_url, wordlist, threads_count)

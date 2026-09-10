@@ -1,79 +1,70 @@
 import re
+from getpass import getpass
 
-# List of commonly used weak passwords
-COMMON_PASSWORDS = [
+COMMON_PASSWORDS = {
     "1234", "123456", "password", "qwerty", "admin",
-    "iloveyou", "123123", "abc123", "root", "111111"
-]
+    "iloveyou", "123123", "abc123", "root", "111111",
+}
+
 
 def password_strength(password):
     score = 0
     suggestions = []
 
-    # Length Check
-    if len(password) >= 12:
+    if len(password) >= 16:
+        score += 3
+    elif len(password) >= 12:
         score += 2
     elif len(password) >= 8:
         score += 1
     else:
-        suggestions.append("Use at least 12 characters.")
+        suggestions.append("Use at least 12 characters; 16+ is better for important accounts.")
 
-    # Uppercase
-    if re.search(r"[A-Z]", password):
-        score += 1
-    else:
-        suggestions.append("Add uppercase letters (A-Z).")
+    checks = (
+        (r"[A-Z]", "Add uppercase letters (A-Z)."),
+        (r"[a-z]", "Add lowercase letters (a-z)."),
+        (r"[0-9]", "Add numbers (0-9)."),
+        (r"[^A-Za-z0-9\s]", "Add special characters."),
+    )
 
-    # Lowercase
-    if re.search(r"[a-z]", password):
-        score += 1
-    else:
-        suggestions.append("Add lowercase letters (a-z).")
+    for pattern, suggestion in checks:
+        if re.search(pattern, password):
+            score += 1
+        else:
+            suggestions.append(suggestion)
 
-    # Numbers
-    if re.search(r"[0-9]", password):
-        score += 1
-    else:
-        suggestions.append("Add numbers (0-9).")
+    lowered = password.lower()
+    if lowered in COMMON_PASSWORDS or any(weak in lowered for weak in COMMON_PASSWORDS if len(weak) >= 6):
+        score = max(0, score - 3)
+        suggestions.append("Avoid common passwords and predictable words.")
 
-    # Special Characters
-    if re.search(r"[@$!%*?&#^+=_.,-]", password):
-        score += 1
-    else:
-        suggestions.append("Add special characters (!@#$%).")
-
-    # Common Password Check
-    for weak in COMMON_PASSWORDS:
-        if weak in password.lower():
-            suggestions.append("Avoid common passwords like '123456', 'password'.")
-            score = max(0, score - 2)
-
-    # Strength Category
-    if score >= 6:
+    if score >= 7:
         strength = "VERY STRONG"
-    elif score >= 4:
+    elif score >= 5:
         strength = "STRONG"
-    elif score >= 2:
+    elif score >= 3:
         strength = "MEDIUM"
     else:
         strength = "WEAK"
 
     return strength, suggestions
 
+
 def main():
-    print("=== Password Strength Checker ===")
-    password = input("Enter a password to analyze: ")
+    print("=== PASSWORD STRENGTH CHECKER ===")
+    print("Rule-based local heuristic; no AI model is used and the password is not saved.\n")
+    password = getpass("Enter a password to analyze: ")
 
     strength, suggestions = password_strength(password)
-
     print(f"\nPassword Strength: {strength}")
 
     if suggestions:
         print("\nSuggestions to improve:")
-        for s in suggestions:
-            print(f"- {s}")
+        for suggestion in dict.fromkeys(suggestions):
+            print(f"- {suggestion}")
     else:
-        print("\nYour password is strong. No improvements needed!")
+        print("\nNo improvements suggested by the configured rules.")
+
 
 if __name__ == "__main__":
     main()

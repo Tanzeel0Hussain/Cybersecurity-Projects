@@ -1,25 +1,38 @@
-# 🔐 Cyber Security Awareness & Risk Assessment Platform
+# 🎓 Cyber Security Awareness & Risk Assessment Platform
 
-A full-stack cybersecurity awareness system that educates users and evaluates their cyber risk level.
+A Flask-based defensive awareness application that helps users review everyday security habits and generates a simple risk score with recommendations.
 
-## 🚀 Features
-- Cyber awareness education
-- Risk assessment quiz
-- Risk score calculation
+## Features
+- Cybersecurity awareness questionnaire
+- Client-side answer validation
+- Server-side answer validation
+- Low / Medium / High risk result
 - Security recommendations
-- Dashboard-ready backend
+- JSON report history
+- Clean Flask structure
+- Working `static/js/quiz.js` path
+- Real SVG project banner
 
-## 🛠 Technologies
-- HTML
-- CSS
-- JavaScript
-- Python (Flask)
+## Install
 
-## ⚠️ Legal Notice
-This project is for educational & awareness purposes only.
+```bash
+pip install -r requirements.txt
+```
 
-## How to Run
-'''
-pip install flask
+## Run
+
+```bash
 python app.py
-'''
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000/
+```
+
+## Data
+Assessment results are stored in `data/reports.json`. Do not store sensitive personal information in this demo data file.
+
+## Scope
+This is an educational risk-awareness tool, not a professional security audit or compliance certification system.

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tanzeel Hussain's cybersecurity projects portfolio with 15 defensive and educational security projects.">
+  <title>Cybersecurity Projects | Tanzeel Hussain</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav wrap">
+      <a class="brand" href="./">TH<span>Sec</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a class="button small" href="https://github.com/Tanzeel0Hussain/Cybersecurity-Projects" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </nav>
+
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">CYBERSECURITY • BLUE TEAM • GRC • NETWORKING</p>
+        <h1>15 cybersecurity projects in one live portfolio.</h1>
+        <p class="lead">Defensive security tools, network visibility projects, password-awareness utilities, SOC concepts, web security checks and governance projects — documented and organized for portfolio review.</p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">Explore Projects</a>
+          <a class="button secondary" href="https://github.com/Tanzeel0Hussain" target="_blank" rel="noreferrer">GitHub Profile</a>
+        </div>
+      </div>
+      <div class="terminal-card" aria-label="Portfolio summary">
+        <div class="terminal-top"><span></span><span></span><span></span></div>
+        <pre><code>$ portfolio --summary
+
+projects     15
+focus        defensive-security
+languages    Python, HTML, CSS, JS
+status       reviewed & documented
+live         GitHub Pages showcase
+
+$ _</code></pre>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="projects" class="wrap section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">PROJECT LIBRARY</p>
+          <h2>Explore all projects</h2>
+        </div>
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Search projects…" aria-label="Search projects">
+        </div>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="network">Network</button>
+        <button class="filter" data-filter="blue-team">Blue Team</button>
+        <button class="filter" data-filter="password">Password</button>
+        <button class="filter" data-filter="web">Web</button>
+        <button class="filter" data-filter="grc">GRC</button>
+      </div>
+
+      <div id="projectGrid" class="project-grid"></div>
+    </section>
+
+    <section id="about" class="about section">
+      <div class="wrap about-grid">
+        <div>
+          <p class="eyebrow">ABOUT THIS PORTFOLIO</p>
+          <h2>Built for learning, defensive practice and portfolio review.</h2>
+        </div>
+        <div>
+          <p>The projects use Python and web technologies to demonstrate security concepts in a controlled way. Network-scanning, packet-capture and local simulation projects are intended only for owned or explicitly authorized environments.</p>
+          <p class="muted">GitHub Pages hosts the live showcase. Native Python, raw-socket, Tkinter, Scapy and Flask-server functionality is represented here through project pages and source links because GitHub Pages is a static host.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>© <span id="year"></span> Tanzeel Hussain</p>
+      <p>Cybersecurity Projects Portfolio</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

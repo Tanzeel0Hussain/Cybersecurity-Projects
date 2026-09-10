@@ -1,81 +1,34 @@
-# 🛡️ Cyber Security Policy Generator Platform
+# 🛡️ Cyber Security Policy Generator
 
-A professional **full-stack cybersecurity compliance tool** that automatically generates
-**Cyber Security Policies** for organizations based on their profile.
+A Flask-based GRC/awareness project that generates a customizable cybersecurity policy draft from basic organization information.
 
-This project is designed for:
-- Cybersecurity students
-- SOC / GRC learning
-- Compliance & policy understanding
-- Strong GitHub portfolio building
+## Features
+- Organization name, industry and size input
+- Generates a structured security-policy draft
+- Covers access control, authentication, data protection, backups, incident response, acceptable use, vendors, awareness and policy review
+- Stores generated drafts in `data/policies.json`
+- Input validation and safer file handling
 
----
+## Install
 
-## 🚀 Project Overview
-
-Organizations often struggle to write proper cybersecurity policies.
-This platform solves that problem by generating **ready-to-use security policies**
-based on company information such as industry and size.
-
-❌ No hacking  
-✅ Ethical & compliance-based  
-✅ Real corporate use-case
-
----
-
-## ✨ Features
-
-- 🔐 Automated Cyber Security Policy Generation
-- 🏢 Company-based customization
-- 🧾 Policy storage in JSON format
-- 🎨 Clean and simple UI
-- ⚙️ Flask backend logic
-- 📊 SOC & GRC aligned structure
-
----
-
-## 🛠 Technologies Used
-
-- **Python (Flask)**
-- **HTML**
-- **CSS**
-- **JSON (Data Storage)**
-
----
-
-## 📁 Project Structure
-
-- Cyber-Security-Policy-Generator/  
-- │ 
-- ├── app.py    
-- ├── requirements.txt  
-- ├── README.md 
-- │ 
-- ├── data/ 
-- │ └── policies.json   
-- │ 
-- ├── templates/    
-- │ ├── index.html  
-- │ └── policy.html 
-- │ 
-- ├── static/   
-- │ └── css/style.css   
-
----
-
-## ▶️ How It Works
-
-1. User enters company details (name, industry, size)
-2. Backend processes the input
-3. System generates a professional cyber security policy
-4. Policy is displayed on screen
-5. Policy data is stored for future reference
-
----
-
-## ▶️ How to Run the Project
-
-### 1️⃣ Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
+
+## Run
+
+```bash
+python app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000/
+```
+
+## Compliance note
+The generated text is a **starter template**, not legal advice and not automatic ISO 27001, NIST, PCI DSS, HIPAA or other regulatory certification. Organizations should review policies with appropriate security, legal and compliance professionals.
+
+## Defensive scope
+This project is focused on governance, awareness and security-policy education; it does not perform offensive security actions.

@@ -1,51 +1,85 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from pathlib import Path
 import sqlite3
-import hashlib
+from flask import Blueprint, render_template, request, redirect, url_for, session, flash
+from werkzeug.security import generate_password_hash, check_password_hash
 
+BASE_DIR = Path(__file__).resolve().parent
+DB_PATH = BASE_DIR / "database.db"
 auth_bp = Blueprint("auth", __name__)
 
+
 def get_db():
-    return sqlite3.connect("database.db")
+    connection = sqlite3.connect(DB_PATH)
+    connection.row_factory = sqlite3.Row
+    return connection
+
+
+def initialize_database():
+    with get_db() as db:
+        db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT NOT NULL UNIQUE,
+                password_hash TEXT NOT NULL
+            )
+            """
+        )
+
 
 @auth_bp.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
 
-        hashed_password = hashlib.sha256(password.encode()).hexdigest()
+        if len(username) < 3 or len(username) > 50:
+            flash("Username must be 3-50 characters.", "error")
+            return render_template("register.html")
+        if len(password) < 8:
+            flash("Password must be at least 8 characters.", "error")
+            return render_template("register.html")
 
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("INSERT INTO users VALUES (?,?)", (username, hashed_password))
-        db.commit()
-        db.close()
+        try:
+            with get_db() as db:
+                db.execute(
+                    "INSERT INTO users (username, password_hash) VALUES (?, ?)",
+                    (username, generate_password_hash(password)),
+                )
+        except sqlite3.IntegrityError:
+            flash("That username already exists.", "error")
+            return render_template("register.html")
 
+        flash("Registration successful. Please sign in.", "success")
         return redirect(url_for("auth.login"))
 
     return render_template("register.html")
 
+
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
 
-        hashed_password = hashlib.sha256(password.encode()).hexdigest()
+        with get_db() as db:
+            user = db.execute(
+                "SELECT id, username, password_hash FROM users WHERE username = ?",
+                (username,),
+            ).fetchone()
 
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hashed_password))
-        user = cursor.fetchone()
-        db.close()
-
-        if user:
-            session["user"] = username
+        if user and check_password_hash(user["password_hash"], password):
+            session.clear()
+            session["user"] = user["username"]
+            session["user_id"] = user["id"]
             return redirect(url_for("dashboard"))
+
+        flash("Invalid username or password.", "error")
 
     return render_template("login.html")
 
-@auth_bp.route("/logout")
+
+@auth_bp.route("/logout", methods=["POST"])
 def logout():
-    session.pop("user", None)
+    session.clear()
     return redirect(url_for("auth.login"))

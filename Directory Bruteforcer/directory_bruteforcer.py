@@ -1,44 +1,61 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from urllib.parse import urljoin
 import requests
-import threading
 
-found_paths = []
+MAX_WORKERS = 20
+TIMEOUT = 5
+FOUND_CODES = {200, 301, 302, 403}
 
-def scan_path(base_url, path):
-    url = f"{base_url}/{path}"
+
+def scan_path(session, base_url, path):
+    url = urljoin(base_url.rstrip("/") + "/", path.lstrip("/"))
     try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            print(f"[FOUND] {url}")
-            found_paths.append(url)
-        else:
-            print(f"[404] {url}")
-    except:
-        print(f"[ERROR] {url}")
+        response = session.get(url, timeout=TIMEOUT, allow_redirects=False)
+        if response.status_code in FOUND_CODES:
+            return url, response.status_code
+    except requests.RequestException:
+        pass
+    return None
 
-def start_bruteforce(base_url, wordlist_file):
-    threads = []
 
-    with open(wordlist_file, 'r') as file:
-        for line in file:
-            path = line.strip()
-            t = threading.Thread(target=scan_path, args=(base_url, path))
-            threads.append(t)
-            t.start()
+def start_scan(base_url, wordlist_file):
+    wordlist = Path(wordlist_file)
+    if not wordlist.is_file():
+        print(f"[!] Wordlist not found: {wordlist_file}")
+        return
 
-    for thread in threads:
-        thread.join()
+    paths = [line.strip() for line in wordlist.read_text(encoding="utf-8", errors="ignore").splitlines() if line.strip()]
+    if not paths:
+        print("[!] Wordlist is empty.")
+        return
 
-    # Save results
-    with open("found_directories.txt", "w") as output:
-        for item in found_paths:
-            output.write(item + "\n")
+    found = []
+    with requests.Session() as session:
+        session.headers.update({"User-Agent": "Authorized-Security-Lab/1.0"})
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = [executor.submit(scan_path, session, base_url, path) for path in paths]
+            for future in as_completed(futures):
+                result = future.result()
+                if result:
+                    url, status = result
+                    print(f"[FOUND {status}] {url}")
+                    found.append(result)
 
-    print("\nScan complete! Results saved to found_directories.txt")
+    with open("found_directories.txt", "w", encoding="utf-8") as output:
+        for url, status in sorted(found):
+            output.write(f"{url} [{status}]\n")
+
+    print(f"\nScan complete. {len(found)} path(s) recorded in found_directories.txt")
+
 
 if __name__ == "__main__":
-    print("=== Directory Bruteforcer ===")
-
+    print("=== Directory Discovery Tool ===")
+    print("Use only with systems you own or have explicit permission to test.\n")
     base_url = input("Enter target URL (e.g., https://example.com): ").strip()
-    wordlist_file = input("Enter wordlist file name: ").strip()
+    wordlist_file = input("Enter wordlist filename: ").strip()
 
-    start_bruteforce(base_url, wordlist_file)
+    if not base_url.startswith(("http://", "https://")):
+        print("[!] URL must start with http:// or https://")
+    else:
+        start_scan(base_url, wordlist_file)

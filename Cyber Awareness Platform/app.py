@@ -1,57 +1,74 @@
-from flask import Flask, render_template, request
+from pathlib import Path
+from flask import Flask, render_template, request, abort
 import json
-from datetime import datetime
+from datetime import datetime, timezone
+
+BASE_DIR = Path(__file__).resolve().parent
+REPORTS_FILE = BASE_DIR / "data" / "reports.json"
 
 app = Flask(__name__)
 
+
 def calculate_risk(answers):
-    score = 0
-    for ans in answers:
-        score += int(ans)
+    if len(answers) != 4:
+        raise ValueError("All assessment questions must be answered.")
+
+    allowed_values = {"0", "2", "3"}
+    if any(answer not in allowed_values for answer in answers):
+        raise ValueError("Invalid assessment response.")
+
+    score = sum(int(answer) for answer in answers)
 
     if score <= 5:
-        level = "Low Risk"
-        color = "green"
-    elif score <= 10:
-        level = "Medium Risk"
-        color = "orange"
-    else:
-        level = "High Risk"
-        color = "red"
+        return score, "Low Risk", "green"
+    if score <= 10:
+        return score, "Medium Risk", "orange"
+    return score, "High Risk", "red"
 
-    return score, level, color
+
+def load_reports():
+    try:
+        with REPORTS_FILE.open("r", encoding="utf-8") as file:
+            data = json.load(file)
+            return data if isinstance(data, list) else []
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
+
 @app.route("/quiz")
 def quiz():
     return render_template("quiz.html")
 
+
 @app.route("/report", methods=["POST"])
 def report():
     answers = request.form.getlist("q")
-    score, level, color = calculate_risk(answers)
-
-    report_data = {
-        "score": score,
-        "level": level,
-        "date": datetime.now().strftime("%Y-%m-%d %H:%M")
-    }
 
     try:
-        with open("data/reports.json", "r") as f:
-            data = json.load(f)
-    except:
-        data = []
+        score, level, color = calculate_risk(answers)
+    except ValueError as exc:
+        abort(400, description=str(exc))
 
-    data.append(report_data)
+    REPORTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    reports = load_reports()
+    reports.append(
+        {
+            "score": score,
+            "level": level,
+            "date": datetime.now(timezone.utc).isoformat(timespec="minutes"),
+        }
+    )
 
-    with open("data/reports.json", "w") as f:
-        json.dump(data, f, indent=4)
+    with REPORTS_FILE.open("w", encoding="utf-8") as file:
+        json.dump(reports, file, indent=2)
 
     return render_template("report.html", score=score, level=level, color=color)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
