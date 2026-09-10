@@ -1,83 +1,72 @@
 import socket
-import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Dictionary of common ports and their known services
 COMMON_SERVICES = {
-    21: "FTP",
-    22: "SSH",
-    23: "Telnet",
-    25: "SMTP",
-    53: "DNS",
-    80: "HTTP",
-    110: "POP3",
-    143: "IMAP",
-    443: "HTTPS",
-    3306: "MySQL",
-    3389: "RDP",
-    8080: "HTTP Proxy",
+    21: "FTP", 22: "SSH", 23: "Telnet", 25: "SMTP", 53: "DNS",
+    80: "HTTP", 110: "POP3", 143: "IMAP", 443: "HTTPS",
+    3306: "MySQL", 3389: "RDP", 8080: "HTTP Proxy",
 }
 
-# Very small vulnerability list (demo purpose only)
-VULNERABILITIES = {
-    21: "Anonymous FTP login possible",
-    22: "Weak SSH passwords risk",
-    23: "Telnet transmits data in plain text (NOT secure)",
-    80: "Check for outdated Apache/Nginx versions",
-    3306: "MySQL default credentials vulnerability",
-    3389: "Weak RDP protection risk"
+SECURITY_NOTES = {
+    21: "FTP may expose credentials if used without encryption.",
+    23: "Telnet sends traffic in plaintext and should be avoided.",
+    80: "HTTP is unencrypted; prefer HTTPS for sensitive traffic.",
+    3306: "Database ports should normally be restricted from public access.",
+    3389: "RDP should be protected with MFA, firewall rules, and strong authentication.",
 }
 
-def grab_banner(ip, port):
-    try:
-        s = socket.socket()
-        s.settimeout(1)
-        s.connect((ip, port))
-        banner = s.recv(1024).decode().strip()
-        s.close()
-        return banner
-    except:
-        return None
+MAX_WORKERS = 100
+TIMEOUT = 0.6
+
 
 def scan_port(ip, port):
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(0.5)
-        result = sock.connect_ex((ip, port))
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(TIMEOUT)
+            if sock.connect_ex((ip, port)) != 0:
+                return None
 
-        if result == 0:
-            service = COMMON_SERVICES.get(port, "Unknown Service")
-            print(f"[OPEN] Port {port} ({service})")
+        service = COMMON_SERVICES.get(port, "Unknown Service")
+        note = SECURITY_NOTES.get(port)
+        return port, service, note
+    except OSError:
+        return None
 
-            banner = grab_banner(ip, port)
-            if banner:
-                print(f"       Banner: {banner}")
-
-            if port in VULNERABILITIES:
-                print(f"        Possible Vulnerability: {VULNERABILITIES[port]}")
-
-        sock.close()
-    except:
-        pass
 
 def main():
-    print("\n=== ADVANCED PORT SCANNER ===")
-    ip = input("Enter target IP: ")
-    start_port = int(input("Start port: "))
-    end_port = int(input("End port: "))
+    print("\n=== PORT SCANNER ===")
+    target = input("Enter target IP/hostname: ").strip()
+
+    try:
+        ip = socket.gethostbyname(target)
+        start_port = int(input("Start port: "))
+        end_port = int(input("End port: "))
+    except (socket.gaierror, ValueError):
+        print("[!] Invalid hostname/IP or port value.")
+        return
+
+    if not (1 <= start_port <= end_port <= 65535):
+        print("[!] Port range must be between 1 and 65535.")
+        return
 
     print(f"\nScanning {ip} from port {start_port} to {end_port}...\n")
 
-    threads = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = [executor.submit(scan_port, ip, port) for port in range(start_port, end_port + 1)]
+        results = []
+        for future in as_completed(futures):
+            result = future.result()
+            if result:
+                results.append(result)
 
-    for port in range(start_port, end_port + 1):
-        thread = threading.Thread(target=scan_port, args=(ip, port))
-        threads.append(thread)
-        thread.start()
+    for port, service, note in sorted(results):
+        print(f"[OPEN] Port {port} ({service})")
+        if note:
+            print(f"       Security note: {note}")
 
-    for t in threads:
-        t.join()
+    print(f"\nScan complete. {len(results)} open port(s) found.")
+    print("Use only on systems you own or are explicitly authorized to test.\n")
 
-    print("\n Scan Complete!\n")
 
 if __name__ == "__main__":
     main()
