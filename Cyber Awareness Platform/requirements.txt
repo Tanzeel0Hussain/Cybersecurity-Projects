@@ -1,3 +1,1 @@
-Flask
-Flask-Login
-Flask-SQLAlchemy
+Flask>=3.0,<4.0
