@@ -1,25 +1,24 @@
 # 🔐 Password Strength Checker
 
-A Python tool that analyzes password strength and provides security improvement suggestions.
+A defensive password-strength education tool that uses **rule-based heuristics** to evaluate a password and suggest improvements.
 
-## 🚀 Features
-- Checks password length
-- Uppercase / lowercase detection
-- Numbers and special characters check
-- Common-password detection
-- Suggestion engine
-- Clean and simple output
+## Checks
+- Length
+- Uppercase and lowercase characters
+- Numbers
+- Special characters
+- Common weak-password patterns
 
-## ▶️ How to Run
-python port_scanner.py
+## Run
 
-## 📂 File Structure
-Password Strengt Checker/  
-│── password_streng_checker/  
-│── README.md
+```bash
+python password_strength_checker.py
+```
 
-## 📌 Future Improvements
-- Add GUI (Tkinter)
-- Add password breach checking (using local dataset)
+No third-party package is required.
 
-- Add color-coded output
+## Accuracy note
+This project does **not** use machine learning or an AI model. The scoring is heuristic and intended for awareness and learning, not as a replacement for an enterprise password-security system.
+
+## Privacy
+The updated version uses hidden terminal input where supported and does not save entered passwords.

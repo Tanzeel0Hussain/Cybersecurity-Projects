@@ -1,92 +1,34 @@
-# 🔓 Password Cracker (Hash-Based | Ethical)
+# 🔑 Password Cracker (Offline Hash Demo)
 
-An advanced Python-based password cracker that performs dictionary attacks on hashed passwords.
-This project is designed for cybersecurity education, digital forensics, and ethical hacking labs.
+An offline dictionary-matching project for learning how weak password hashes can be recovered when a matching word is present in a local wordlist.
 
----
+## Supported demonstrations
+- MD5
+- SHA-1
+- SHA-256
 
-## 🚀 What This Project Can Do
-- Crack hashed passwords using dictionary attack
-- Supports multiple hash algorithms:
-  - MD5
-  - SHA1
-  - SHA256
-- Matches hashes against large wordlists
-- Displays cracked & failed hashes clearly
-- Saves cracked passwords to file
-- Works fully offline (no internet needed)
+## Included files
+- `password_cracker.py`
+- `hashes.txt` — safe sample hashes
+- `wordlist.txt` — small sample wordlist
+- `requirements.txt`
 
----
+## Install
 
-## 🧠 Why This Project Is ADVANCED
-✔ Uses real-world cryptographic hashing algorithms  
-✔ Demonstrates password security weaknesses  
-✔ Simulates forensic & penetration testing scenarios  
-✔ More complex logic than scanners or brute tools  
-✔ Interview-level cybersecurity project  
+```bash
+pip install -r requirements.txt
+```
 
-Compared to basic tools, this project focuses on:
-- Cryptography concepts
-- Hashing vs plaintext passwords
-- Security auditing techniques
+## Run
 
----
-
-## 🛠 Requirements
-
-pip install colorama
-pip install colorama requests
-
----
-
-## ▶️ How to Run
-
+```bash
 python password_cracker.py
+```
 
----
+The program reads only local files and writes successful demo matches to `cracked_passwords.txt`.
 
-## 📁 Required Files
+## Security note
+MD5 and SHA-1 are unsuitable for modern password storage. Real applications should use a dedicated password-hashing function such as Argon2, scrypt, bcrypt or PBKDF2 with appropriate configuration.
 
-hashes.txt  
-→ Contains password hashes (one per line)
-
-wordlist.txt  
-→ Contains possible passwords
-
----
-
-## 📁 Output File
-
-cracked_passwords.txt
-
----
-
-## ⚙️ How It Works
-1. Loads hashes & wordlist
-2. Converts each word into selected hash
-3. Compares hash values
-4. Cracks matching passwords
-5. Logs results to file
-
----
-
-## ⚠️ Legal Disclaimer
-This project is created ONLY for:
-✔ Educational use  
-✔ Cybersecurity labs  
-✔ Digital forensics practice  
-
-Do NOT use this tool to attack real systems or unauthorized data.
-
----
-
-## 🔮 Future Enhancements
-- Brute-force mode
-- Rainbow table support
-- GUI version
-- Multi-threading
-- Hash auto-detection
-
----
-
-⭐ If you like this project, give the repository a star!
+## Ethical use
+Use only with hashes you own or have explicit authorization to test.

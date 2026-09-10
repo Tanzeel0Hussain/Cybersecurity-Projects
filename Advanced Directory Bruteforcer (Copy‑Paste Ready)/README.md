@@ -1,43 +1,26 @@
-# Advanced Directory Bruteforcer
+# 🚀 Advanced Directory Bruteforcer
 
-This is a high‑speed, multi‑threaded, advanced directory brute‑forcing tool for ethical hacking and cybersecurity research.
+A controlled multi-threaded directory discovery tool for authorized cybersecurity labs and defensive testing.
 
----
+## Features
+- Bounded worker pool
+- Detects useful HTTP status codes such as 200, 301, 302 and 403
+- Request timeout and connection error handling
+- Colorized terminal output
+- Saves findings to `advanced_found_directories.txt`
+- Safer input validation and normalized URLs
 
-## 🚀 Features
-- Multithreading support (very fast)
-- Detects status codes: 200, 301, 302, 403
-- Colored output for clear visibility
-- Saves results into a file
-- User-Agent spoofing
-- Handles timeouts & connection errors
-- Clean banner + simple interface
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 📌 Requirements
+## Run
 
-Install required modules:
+```bash
+python advanced_directory_bruteforcer.py
+```
 
-pip install requests colorama
-pip install colorama requests
-
-(Both commands added so users can copy any one.)
-
----
-
-## ▶️ How to Run
-
-Run the script using this command: python advanced_directory_bruteforcer.py
-
----
-
-## 📁 Output File
-All discovered paths will be saved in:
-
-advanced_found_directories.txt
-
----
-
-## ⚠️ Ethical Use
-Use this tool only for **learning**, **cybersecurity practice**, and **authorized penetration testing**.
+## Ethical use
+Use only on websites and applications you own or have explicit permission to assess. High request rates can affect a server, so choose a reasonable thread count.

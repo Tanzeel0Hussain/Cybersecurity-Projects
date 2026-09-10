@@ -1,85 +1,55 @@
-# 🔐 Cybersecurity Projects Collection
+# 🛡️ Cybersecurity Projects Portfolio
 
-A professional collection of cybersecurity & ethical hacking tools created by **Tanzeel**.  
-Each project includes complete source code, documentation, and usage guide.
+A curated collection of **15 cybersecurity learning projects** by **Tanzeel Hussain**, covering defensive security, network visibility, password awareness, log analysis, SOC concepts and security governance.
 
-This repository is perfect for:
-- Cybersecurity learning  
-- Ethical hacking practice  
-- Building a strong GitHub portfolio  
-- Python networking experience  
+> 🌐 **Live Portfolio:** https://tanzeel0hussain.github.io/Cybersecurity-Projects/
 
----
+## 📚 Project Index
 
-# 📁 Project Index
+| # | Project | Focus | Source | Live Showcase |
+|---|---|---|---|---|
+| 1 | Port Scanner | Authorized TCP visibility | [Code](./Port%20Scanner/) | [Open](./project.html?id=port-scanner) |
+| 2 | GUI Port Scanner | Desktop network utility | [Code](./GUI%20Port%20Scanner/) | [Open](./project.html?id=gui-port-scanner) |
+| 3 | Directory Bruteforcer | Authorized content discovery | [Code](./Directory%20Bruteforcer/) | [Open](./project.html?id=directory-bruteforcer) |
+| 4 | Advanced Directory Bruteforcer | Controlled concurrent discovery | [Code](./Advanced%20Directory%20Bruteforcer%20%28Copy%E2%80%91Paste%20Ready%29/) | [Open](./project.html?id=advanced-directory-bruteforcer) |
+| 5 | Advanced Packet Sniffer | Defensive packet metadata | [Code](./Advanced%20Packet%20Sniffer/) | [Open](./project.html?id=packet-sniffer) |
+| 6 | Password Strength Checker | Password awareness | [Code](./Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) | [Open](./project.html?id=password-strength) |
+| 7 | Advanced Network Mapper | Authorized network inventory | [Code](./Advanced%20Network%20Mapper/) | [Open](./project.html?id=network-mapper) |
+| 8 | Login Bruteforce Simulator | Local authentication simulation | [Code](./Login%20Bruteforce%20Simulator/) | [Open](./project.html?id=login-simulator) |
+| 9 | Password Cracker | Offline hash-learning demo | [Code](./Password%20Cracker/) | [Open](./project.html?id=password-cracker) |
+| 10 | Log Analyzer | Blue Team / SOC log analysis | [Code](./Log%20Analyzer/) | [Open](./project.html?id=log-analyzer) |
+| 11 | Vulnerability Scanner | Defensive web checks | [Code](./Vulnerability%20Scanner/) | [Open](./project.html?id=vulnerability-scanner) |
+| 12 | Password Policy Auditor | Security policy validation | [Code](./Password%20Policy%20Auditor/) | [Open](./project.html?id=password-policy) |
+| 13 | Cyber Awareness Platform | Awareness risk assessment | [Code](./Cyber%20Awareness%20Platform/) | [Open](./project.html?id=cyber-awareness) |
+| 14 | Policy Generator | GRC / policy drafting | [Code](./Policy%20Generator/) | [Open](./project.html?id=policy-generator) |
+| 15 | Operations Dashboard Cyber Security | SOC dashboard | [Code](./Operations%20Dashboard%20Cyber%20Security/) | [Open](./project.html?id=soc-dashboard) |
 
-Below are all the completed projects with short descriptions & links to their folders.  
-👉 **Project Link:** [All Cybersecurity Projects](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects)
+## 🧰 Technologies
 
----
+Python, Flask, HTML, CSS, JavaScript, Tkinter, Scapy, Requests, sockets, threading/concurrency, JSON and SQLite concepts.
 
-## 1️⃣ **Port Scanner**
-A simple multithreaded console-based port scanner.  
-👉 **Project Link:** [Port Scanner](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Port%20Scanner)
+## ✅ Repository cleanup
 
----
+The projects were reviewed for missing dependencies, unsafe defaults, broken paths, uncontrolled threading, weak error handling, misleading descriptions and README inconsistencies. The portfolio now uses clearer defensive/educational wording and consistent run instructions.
 
-## 2️⃣ **GUI Port Scanner**
-A Tkinter-based graphical port scanner with real-time output.  
-👉 **Project Link:** [GUI Port Scanner](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/GUI%20Port%20Scanner)
+## 🌐 About the Live Portfolio
 
----
+The GitHub Pages site provides a **live showcase page for every project**. Browser pages can demonstrate project purpose, features, stack and run instructions. Projects that depend on raw sockets, packet capture, Tkinter or a Python/Flask backend cannot execute those native/server-side capabilities inside GitHub Pages itself; their live pages are portfolio showcases with direct source links.
 
-## 3️⃣ **Directory Bruteforcer (Basic)**
-A beginner-friendly tool to find hidden directories using a wordlist.  
-👉 **Project Link:** [Directory Bruteforcer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Directory%20Bruteforcer)
+## ⚠️ Ethical Use
 
----
+Network and security-testing utilities in this repository are intended only for:
 
-## 4️⃣ **Advanced Directory Bruteforcer**
-A professional directory brute‑forcer with status code detection, colors & multithreading.  
-👉 **Project Link:** [Advanced Directory Bruteforcer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/c2133549b45d5174ace3a0acc95e351df50b676b/Advanced%20Directory%20Bruteforcer%20(Copy%E2%80%91Paste%20Ready))
+- systems you own;
+- labs and CTF environments;
+- environments where you have explicit authorization;
+- defensive education and cybersecurity research.
 
----
+Do not use these tools against systems, networks, accounts or data without permission.
 
-## 5️⃣ **Advanced Packet Sniffer**
-A real-time packet sniffer (Wireshark‑style) that captures and logs network packets.  
-👉 **Project Link:** [Advanced Packet Sniffer](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Advanced%20Packet%20Sniffer)
+## 👤 Author
 
----
+**Tanzeel Hussain**  
+GitHub: https://github.com/Tanzeel0Hussain
 
-## 6️⃣ **Password Strength Checker**
-AI‑style logic to test password strength with color-coded output.  
-👉 **Project Link:** [Password Strength Checker](https://github.com/Tanzeel0Hussain/Cybersecurity-Projects/tree/main/Password%20Strength%20Checker%20(AI-Style%20Logic%20%2B%20Color%20Output))
-
----
-
-# 🛠 Technologies Used
-- Python  
-- Sockets  
-- Scapy  
-- Requests  
-- Colorama  
-- Tkinter  
-- Multithreading  
-
----
-
-# ⚠️ Legal Disclaimer
-These tools are made **only** for:  
-✔ Educational use  
-✔ Lab testing  
-✔ Authorized penetration testing  
-
-Misuse for illegal purposes is strictly prohibited.
-
----
-
-# ⭐ Future Projects (Coming Soon)
-- Network Mapper (Nmap-style)  
-- Packet Analyzer GUI  
-- Hash Cracker  
-- Log Analyzer  
-- Password Attacker  
-
-
+⭐ If this portfolio is useful, consider starring the repository.

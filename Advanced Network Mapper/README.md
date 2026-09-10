@@ -1,73 +1,35 @@
-# 🧭 Network Mapper (Mini Nmap)
+# 🧭 Advanced Network Mapper
 
-An advanced Python-based Network Mapper inspired by Nmap.  
-This tool discovers live hosts in a network and scans open ports with service detection.
+A Python network-mapping utility for authorized lab and defensive network inventory work.
 
----
+## Features
+- `/24` IPv4 host discovery using ping
+- Bounded concurrent TCP port checks
+- Common service-name lookup
+- Cross-platform ping handling for Windows/Linux
+- Proper socket cleanup
+- Writes findings to `network_scan_results.txt`
 
-## 🚀 Features
-- Live host discovery (Ping Sweep)
-- Multi-threaded port scanning
-- Service name detection
-- Color-coded output
-- Saves scan results to file
-- Fast & lightweight
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 🛠 Requirements
+## Run
 
-Install required packages:
-
-pip install colorama
-pip install colorama requests
-
----
-
-## ▶️ How to Run
-
+```bash
 python network_mapper.py
+```
 
----
+Example network prefix:
 
-## 🧪 Example Input
-
+```text
 192.168.1.
+```
 
----
+## Notes
+Host discovery depends on ICMP/ping availability. Firewalls may block ping even when a host is online.
 
-## 📁 Output File
-
-network_scan_results.txt
-
----
-
-## ⚙️ How It Works
-1. Performs ping sweep to detect live hosts
-2. Scans common ports (20–1024)
-3. Identifies services on open ports
-4. Displays results in terminal
-5. Saves findings automatically
-
----
-
-## ⚠️ Legal Disclaimer
-This tool is created for:
-✔ Educational purposes  
-✔ Lab testing  
-✔ Authorized penetration testing  
-
-Unauthorized use against systems you do not own is illegal.
-
----
-
-## 🔮 Future Enhancements
-- GUI version
-- OS detection
-- Custom port range
-- Export to CSV
-- Service version detection
-
----
-
-⭐ If you like this project, give the repository a star!
+## Ethical use
+Use only on networks you own or are explicitly authorized to assess.

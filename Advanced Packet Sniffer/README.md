@@ -1,54 +1,30 @@
-# Advanced Packet Sniffer
+# 📡 Advanced Packet Sniffer
 
-This project is an advanced real‑time packet sniffer built using Scapy. It can capture live network traffic, detect protocols, and save packet logs.
+A Python + Scapy packet observation tool for defensive network learning and authorized monitoring.
 
----
+## Features
+- Captures IPv4 traffic
+- Identifies TCP, UDP, ICMP and other IP protocols
+- Shows timestamp, source, destination and packet size
+- Optional interface and capture filter support
+- Writes summarized packet metadata to `captured_packets.log`
+- Graceful handling of permission and capture errors
 
-## 🚀 Features
-- Live packet capture (like mini‑Wireshark)
-- Detects:  
-  ✔ TCP  
-  ✔ UDP  
-  ✔ ICMP  
-- Shows:  
-  ✔ Source IP  
-  ✔ Destination IP  
-  ✔ Protocol  
-  ✔ Packet size  
-- Saves all captured packets to a log file
-- Colorful output for each protocol
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 📌 Requirements
+## Run
 
-Install required modules:
+Linux usually requires elevated packet-capture permission:
 
-pip install scapy colorama  
-pip install colorama scapy
+```bash
+sudo python packet_sniffer.py
+```
 
-(Added in duplicate format for easy copy)
+On Windows, run the terminal with the permissions required by your packet capture driver.
 
----
-
-## ▶️ How to Run
-
-Run the script using this command: python packet_sniffer.py
-
-**Note:**  
-On Windows → Run Python as **Administrator**  
-On Linux → Use **sudo**
-
----
-
-## 📁 Output File
-All captured network packets will be saved in:
-
-captured_packets.log
-
----
-
-## ⚠️ Ethical Use
-Use this tool only for **learning** and **authorized penetration testing**.
-
-
+## Privacy & ethical use
+Capture traffic only on networks and interfaces you are authorized to monitor. This project logs packet metadata, not a claim of full Wireshark functionality.

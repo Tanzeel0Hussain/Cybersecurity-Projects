@@ -1,44 +1,27 @@
-# 🚀 Directory Bruteforcer
+# 📁 Directory Bruteforcer
 
-A fast and simple tool used to discover **hidden directories and files** on a target website by brute‑forcing a wordlist.  
-Perfect for **cybersecurity students**, **bug bounty hunters**, and **ethical hackers**.
+A small authorized web-content discovery tool for learning how directory enumeration works in security testing.
 
----
+## Features
+- Reads paths from a wordlist
+- Uses a bounded thread pool for controlled concurrency
+- Request timeout handling
+- Normalizes the base URL
+- Saves discovered paths to `found_directories.txt`
 
-## 📌 Features
-- ⚡ Fast directory brute‑forcing  
-- 🧵 Multithreading support  
-- 💾 Automatically saves results  
-- 🎯 Simple & beginner‑friendly  
-- 🌐 Works on any website  
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 📌 Requirements
+## Run
 
-Install required packages:
+```bash
+python directory_bruteforcer.py
+```
 
-pip install requests
-pip install requests colorama
+Provide a URL you own or are permitted to test and a local wordlist file.
 
-(Added in duplicate style so users can copy any line.)
-
----
-
-## ▶️ How to Run
-
-Run the script using this command: python directory_bruteforcer.py
-
----
-
-## 📁 Output File
-
-All discovered directories will be saved in:
-
-found_directories.txt
-
----
-
-## ⚠️ Ethical Use
-
-Use this tool **only** for learning, research, and authorized penetration testing.
+## Ethical use
+Directory discovery can generate many HTTP requests. Use this project only in labs, CTFs, or on systems where you have explicit authorization.

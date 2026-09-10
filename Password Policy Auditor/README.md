@@ -1,71 +1,27 @@
-# 🔐 Password Policy Auditor
+# ✅ Password Policy Auditor
 
-A defensive cybersecurity tool that audits passwords against standard security policies.
-This project checks compliance — it does NOT crack or attack passwords.
+A defensive password-policy checking tool for learning how organization password rules can be validated locally.
 
----
+## Checks
+- Minimum length
+- Uppercase letter
+- Lowercase letter
+- Number
+- Special character
 
-## 🚀 What This Project Can Do
-- Check minimum password length
-- Verify uppercase & lowercase usage
-- Detect numeric characters
-- Detect special characters
-- Identify weak password policies
-- Provide clear security feedback
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 🧠 Why This Project Is SAFE & PROFESSIONAL
-✔ No hacking or brute force  
-✔ No password cracking  
-✔ Used by organizations for security audits  
-✔ Focuses on prevention, not attack  
-✔ Blue Team & compliance focused  
+## Run
 
-This tool is commonly used in:
-- Corporate security audits
-- Account policy enforcement
-- Cybersecurity awareness training
-
----
-
-## 🛠 Requirements
-
-pip install colorama
-pip install colorama requests
-
----
-
-## ▶️ How to Run
-
+```bash
 python password_policy_auditor.py
+```
 
----
+The updated version uses hidden password input where supported and does not save the entered password.
 
-## ⚙️ How It Works
-1. Takes password input
-2. Applies security policy rules
-3. Identifies weak areas
-4. Displays compliance report
-
----
-
-## ⚠️ Legal Disclaimer
-This project is fully legal and designed for:
-✔ Educational use  
-✔ Security policy auditing  
-✔ Awareness & training  
-
-No hacking or exploitation is involved.
-
----
-
-## 🔮 Future Enhancements
-- File-based password audits
-- GUI version
-- Custom policy rules
-- Enterprise password reports
-
----
-
-⭐ If you like this project, give the repository a star!
+## Use case
+Useful for cybersecurity awareness, secure-development exercises, policy demonstrations, and GRC/security training.

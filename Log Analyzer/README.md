@@ -1,85 +1,35 @@
-# 📊 Log Analyzer (Security & Forensics Tool)
+# 📊 Log Analyzer
 
-An advanced Python-based log analysis tool designed for Blue Team operations.
-This project analyzes authentication logs to detect brute-force attacks and suspicious behavior.
+A defensive Python log-analysis project for reviewing SSH authentication failures and producing a simple security report.
 
----
+## Features
+- Parses failed SSH login events
+- Counts suspicious source IP addresses
+- Counts targeted usernames
+- Applies a configurable failed-attempt threshold
+- Prints colorized findings
+- Generates `security_report.txt`
+- Includes `sample_auth.log` so the project works immediately
 
-## 🚀 What This Project Can Do
-- Analyze authentication log files
-- Detect failed login attempts
-- Identify suspicious IP addresses
-- Detect brute-force attack patterns
-- Find most targeted usernames
-- Generate a security report automatically
-- Display color-coded terminal output
+## Install
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 🧠 Why This Project Is ADVANCED
-✔ Focuses on Blue Team & SOC operations  
-✔ Uses real server authentication logs  
-✔ Detects real-world attack behavior  
-✔ Applies pattern recognition & thresholds  
-✔ Used in cybersecurity monitoring & forensics  
+## Run
 
-This project goes beyond scanning and attacking —  
-it focuses on **detection, monitoring, and defense**.
+Use the included sample log:
 
----
+```bash
+python log_analyzer.py sample_auth.log
+```
 
-## 🛠 Requirements
+Or analyze an authorized local log file:
 
-pip install colorama
-pip install colorama requests
+```bash
+python log_analyzer.py /path/to/auth.log
+```
 
----
-
-## ▶️ How to Run
-
-python log_analyzer.py
-
----
-
-## 📁 Required Log File
-
-auth.log  
-→ Linux authentication log or sample SSH log file
-
----
-
-## 📁 Output File
-
-security_report.txt
-
----
-
-## ⚙️ How It Works
-1. Reads authentication log file
-2. Extracts IP addresses & usernames
-3. Counts failed login attempts
-4. Flags suspicious IPs using threshold
-5. Generates a detailed security report
-
----
-
-## ⚠️ Legal Disclaimer
-This project is created for:
-✔ Educational use  
-✔ SOC & Blue Team training  
-✔ Digital forensics labs  
-
-Do NOT analyze logs without permission.
-
----
-
-## 🔮 Future Enhancements
-- CSV / JSON export
-- Real-time log monitoring
-- Geo-IP lookup
-- GUI dashboard
-- Email alert system
-
----
-
-⭐ If you like this project, give the repository a star!
+## Defensive use
+This project is designed for Blue Team/SOC learning. Only analyze logs you are authorized to access.
