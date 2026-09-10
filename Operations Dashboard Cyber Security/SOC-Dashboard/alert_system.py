@@ -1,27 +1,27 @@
-import os
+from pathlib import Path
 from datetime import datetime
 
-ALERTS_DIR = "alerts"
-os.makedirs(ALERTS_DIR, exist_ok=True)
 
-def generate_alerts(threat_summary):
+def generate_alerts(threat_summary, alerts_dir="alerts"):
+    alerts_path = Path(alerts_dir)
+    alerts_path.mkdir(parents=True, exist_ok=True)
     alerts_list = []
 
-    # High risk IPs
-    for ip, info in threat_summary["IPs"].items():
-        if info["level"] == "HIGH":
-            alerts_list.append(f"High-Risk IP Detected: {ip} ({info['attempts']} failed attempts)")
+    for ip, info in threat_summary.get("IPs", {}).items():
+        if info.get("level") == "HIGH":
+            alerts_list.append(
+                f"High-risk IP activity: {ip} ({info.get('attempts', 0)} failed attempts)"
+            )
 
-    # High risk Users
-    for user, info in threat_summary["Users"].items():
-        if info["level"] == "HIGH":
-            alerts_list.append(f"High-Risk User Detected: {user} ({info['attempts']} failed attempts)")
+    for user, info in threat_summary.get("Users", {}).items():
+        if info.get("level") == "HIGH":
+            alerts_list.append(
+                f"High-risk targeted account: {user} ({info.get('attempts', 0)} failed attempts)"
+            )
 
-    # Save alerts to file
-    if alerts_list:
-        filename = os.path.join(ALERTS_DIR, f"alerts_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt")
-        with open(filename, "w") as f:
-            for alert in alerts_list:
-                f.write(alert + "\n")
-        return alerts_list, filename
-    return [], None
+    if not alerts_list:
+        return [], None
+
+    filename = alerts_path / f"alerts_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    filename.write_text("\n".join(alerts_list) + "\n", encoding="utf-8")
+    return alerts_list, str(filename)
