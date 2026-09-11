@@ -6,46 +6,37 @@ A curated collection of **15 cybersecurity learning projects** by **Tanzeel Huss
 
 ## 📚 Project Index
 
-| # | Project | Focus | Source | Live Showcase |
+| # | Project | Focus | Source | Live |
 |---|---|---|---|---|
-| 1 | Port Scanner | Authorized TCP visibility | [Code](./Port%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=port-scanner) |
-| 2 | GUI Port Scanner | Desktop network utility | [Code](./GUI%20Port%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=gui-port-scanner) |
-| 3 | Directory Bruteforcer | Authorized content discovery | [Code](./Directory%20Bruteforcer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=directory-bruteforcer) |
-| 4 | Advanced Directory Bruteforcer | Controlled concurrent discovery | [Code](./Advanced%20Directory%20Bruteforcer%20%28Copy%E2%80%91Paste%20Ready%29/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=advanced-directory-bruteforcer) |
-| 5 | Advanced Packet Sniffer | Defensive packet metadata | [Code](./Advanced%20Packet%20Sniffer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=packet-sniffer) |
-| 6 | Password Strength Checker | Password awareness | [Code](./Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-strength) |
-| 7 | Advanced Network Mapper | Authorized network inventory | [Code](./Advanced%20Network%20Mapper/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=network-mapper) |
-| 8 | Login Bruteforce Simulator | Local authentication simulation | [Code](./Login%20Bruteforce%20Simulator/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=login-simulator) |
-| 9 | Password Cracker | Offline hash-learning demo | [Code](./Password%20Cracker/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-cracker) |
-| 10 | Log Analyzer | Blue Team / SOC log analysis | [Code](./Log%20Analyzer/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=log-analyzer) |
-| 11 | Vulnerability Scanner | Defensive web checks | [Code](./Vulnerability%20Scanner/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=vulnerability-scanner) |
-| 12 | Password Policy Auditor | Security policy validation | [Code](./Password%20Policy%20Auditor/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=password-policy) |
-| 13 | Cyber Awareness Platform | Awareness risk assessment | [Code](./Cyber%20Awareness%20Platform/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=cyber-awareness) |
-| 14 | Policy Generator | GRC / policy drafting | [Code](./Policy%20Generator/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=policy-generator) |
-| 15 | Operations Dashboard Cyber Security | SOC dashboard | [Code](./Operations%20Dashboard%20Cyber%20Security/) | [Open](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=soc-dashboard) |
+| 1 | Port Scanner | Authorized TCP visibility | [Code](./Port%20Scanner/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=port-scanner) |
+| 2 | GUI Port Scanner | Desktop network utility | [Code](./GUI%20Port%20Scanner/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=gui-port-scanner) |
+| 3 | Directory Bruteforcer | Authorized content discovery | [Code](./Directory%20Bruteforcer/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=directory-bruteforcer) |
+| 4 | Advanced Directory Bruteforcer | Controlled concurrent discovery | [Code](./Advanced%20Directory%20Bruteforcer%20%28Copy%E2%80%91Paste%20Ready%29/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=advanced-directory-bruteforcer) |
+| 5 | Advanced Packet Sniffer | Defensive packet metadata | [Code](./Advanced%20Packet%20Sniffer/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=packet-sniffer) |
+| 6 | Password Strength Checker | Password awareness | [Code](./Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Password%20Strength%20Checker%20%28AI-Style%20Logic%20%2B%20Color%20Output%29/) |
+| 7 | Advanced Network Mapper | Authorized network inventory | [Code](./Advanced%20Network%20Mapper/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=network-mapper) |
+| 8 | Login Bruteforce Simulator | Local authentication simulation | [Code](./Login%20Bruteforce%20Simulator/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Login%20Bruteforce%20Simulator/) |
+| 9 | Password Cracker | Offline hash-learning demo | [Code](./Password%20Cracker/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Password%20Cracker/) |
+| 10 | Log Analyzer | Blue Team / SOC log analysis | [Code](./Log%20Analyzer/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Log%20Analyzer/) |
+| 11 | Vulnerability Scanner | Defensive web checks | [Code](./Vulnerability%20Scanner/) | [Showcase](https://tanzeel0hussain.github.io/Cybersecurity-Projects/project.html?id=vulnerability-scanner) |
+| 12 | Password Policy Auditor | Security policy validation | [Code](./Password%20Policy%20Auditor/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Password%20Policy%20Auditor/) |
+| 13 | Cyber Awareness Platform | Awareness risk assessment | [Code](./Cyber%20Awareness%20Platform/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Cyber%20Awareness%20Platform/) |
+| 14 | Policy Generator | GRC / policy drafting | [Code](./Policy%20Generator/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Policy%20Generator/) |
+| 15 | Operations Dashboard Cyber Security | SOC dashboard | [Code](./Operations%20Dashboard%20Cyber%20Security/) | [▶ Live App](https://tanzeel0hussain.github.io/Cybersecurity-Projects/Operations%20Dashboard%20Cyber%20Security/) |
 
 ## 🧰 Technologies
 
 Python, Flask, HTML, CSS, JavaScript, Tkinter, Scapy, Requests, sockets, threading/concurrency, JSON and SQLite concepts.
 
-## ✅ Repository cleanup
+## 🌐 GitHub Pages Live Apps
 
-The projects were reviewed for missing dependencies, unsafe defaults, broken paths, uncontrolled threading, weak error handling, misleading descriptions and README inconsistencies. The portfolio now uses clearer defensive/educational wording and consistent run instructions.
+Eight projects now have **real interactive browser versions hosted directly on GitHub Pages**: Password Strength Checker, Login Bruteforce Simulator, Password Cracker safe hash demo, Log Analyzer, Password Policy Auditor, Cyber Awareness Platform, Policy Generator, and SOC Operations Dashboard.
 
-## 🌐 About the Live Portfolio
-
-The GitHub Pages site provides a **live showcase page for every project**. Browser pages can demonstrate project purpose, features, stack and run instructions. Projects that depend on raw sockets, packet capture, Tkinter or a Python/Flask backend cannot execute those native/server-side capabilities inside GitHub Pages itself; their live pages are portfolio showcases with direct source links.
+The original Python/Flask implementations remain in the repository. Browser versions are designed for portfolio demonstration and safe client-side use. Projects requiring raw sockets, packet capture, Tkinter, unrestricted HTTP scanning, or system-level network access remain showcase pages because GitHub Pages cannot execute those capabilities.
 
 ## ⚠️ Ethical Use
 
-Network and security-testing utilities in this repository are intended only for:
-
-- systems you own;
-- labs and CTF environments;
-- environments where you have explicit authorization;
-- defensive education and cybersecurity research.
-
-Do not use these tools against systems, networks, accounts or data without permission.
+Network and security-testing utilities in this repository are intended only for systems you own, labs/CTFs, explicitly authorized environments, defensive education and cybersecurity research. Do not use these tools against systems, networks, accounts or data without permission.
 
 ## 👤 Author
 
