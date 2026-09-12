@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GitHub Profile Insights</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:#0d1117;color:#e6edf3}.wrap{max-width:980px;margin:0 auto;padding:48px 20px}.card{background:#161b22;border:1px solid #30363d;border-radius:16px;padding:24px;margin-top:18px}.hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 10px}.hero p{color:#9da7b3;max-width:720px}.search{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}input{flex:1;min-width:220px;padding:12px 14px;border-radius:10px;border:1px solid #30363d;background:#0d1117;color:#e6edf3}button{padding:12px 18px;border:0;border-radius:10px;background:#238636;color:white;font-weight:700;cursor:pointer}.profile{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center}.avatar{width:110px;height:110px;border-radius:50%;border:1px solid #30363d}.muted{color:#8b949e}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px}.stat{background:#0d1117;border:1px solid #30363d;border-radius:12px;padding:16px}.stat strong{display:block;font-size:1.5rem}.repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.repo{background:#0d1117;border:1px solid #30363d;border-radius:12px;padding:16px}.repo a{color:#58a6ff;text-decoration:none;font-weight:700}.repo p{color:#8b949e;min-height:40px}.tag{display:inline-block;border:1px solid #30363d;border-radius:999px;padding:3px 8px;font-size:.8rem;color:#c9d1d9}.error{color:#ff7b72}.footer{color:#8b949e;font-size:.9rem;margin-top:20px}@media(max-width:600px){.profile{grid-template-columns:1fr}.avatar{width:90px;height:90px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>GitHub Profile Insights</h1>
+      <p>A lightweight GitHub REST API integration that lets you inspect any public GitHub profile and its recently updated repositories.</p>
+      <div class="search">
+        <input id="username" value="Tanzeel0Hussain" aria-label="GitHub username" placeholder="Enter GitHub username" />
+        <button id="loadBtn">Load profile</button>
+      </div>
+      <p id="status" class="muted" role="status"></p>
+    </section>
+
+    <section id="profileCard" class="card" hidden>
+      <div class="profile">
+        <img id="avatar" class="avatar" alt="GitHub avatar" />
+        <div>
+          <h2 id="name"></h2>
+          <p id="login" class="muted"></p>
+          <p id="bio"></p>
+          <a id="profileLink" target="_blank" rel="noopener">Open GitHub profile</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="muted">Public repos</span><strong id="reposCount">0</strong></div>
+        <div class="stat"><span class="muted">Followers</span><strong id="followers">0</strong></div>
+        <div class="stat"><span class="muted">Following</span><strong id="following">0</strong></div>
+      </div>
+    </section>
+
+    <section id="reposCard" class="card" hidden>
+      <h2>Recently updated repositories</h2>
+      <div id="repos" class="repos"></div>
+    </section>
+
+    <p class="footer">Data is retrieved live from GitHub's public REST API. No credentials or private repository data are requested.</p>
+  </main>
+
+  <script>
+    const usernameInput = document.getElementById('username');
+    const loadBtn = document.getElementById('loadBtn');
+    const statusEl = document.getElementById('status');
+    const profileCard = document.getElementById('profileCard');
+    const reposCard = document.getElementById('reposCard');
+
+    function esc(value){
+      return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    }
+
+    async function loadProfile(){
+      const username = usernameInput.value.trim();
+      if(!username){ statusEl.textContent = 'Enter a GitHub username.'; return; }
+
+      statusEl.className = 'muted';
+      statusEl.textContent = 'Loading live data from GitHub…';
+      profileCard.hidden = true;
+      reposCard.hidden = true;
+
+      try{
+        const [profileRes, reposRes] = await Promise.all([
+          fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, {headers:{Accept:'application/vnd.github+json'}}),
+          fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?sort=updated&per_page=6`, {headers:{Accept:'application/vnd.github+json'}})
+        ]);
+
+        if(!profileRes.ok){
+          if(profileRes.status === 404) throw new Error('GitHub user not found.');
+          throw new Error(`GitHub API error: ${profileRes.status}`);
+        }
+        if(!reposRes.ok) throw new Error(`GitHub repositories API error: ${reposRes.status}`);
+
+        const profile = await profileRes.json();
+        const repos = await reposRes.json();
+
+        document.getElementById('avatar').src = profile.avatar_url;
+        document.getElementById('name').textContent = profile.name || profile.login;
+        document.getElementById('login').textContent = `@${profile.login}`;
+        document.getElementById('bio').textContent = profile.bio || 'No public bio provided.';
+        const link = document.getElementById('profileLink');
+        link.href = profile.html_url;
+        link.textContent = profile.html_url;
+        document.getElementById('reposCount').textContent = profile.public_repos;
+        document.getElementById('followers').textContent = profile.followers;
+        document.getElementById('following').textContent = profile.following;
+
+        const reposEl = document.getElementById('repos');
+        reposEl.innerHTML = repos.length ? repos.map(repo => `
+          <article class="repo">
+            <a href="${esc(repo.html_url)}" target="_blank" rel="noopener">${esc(repo.name)}</a>
+            <p>${esc(repo.description || 'No description provided.')}</p>
+            <span class="tag">${esc(repo.language || 'Mixed')}</span>
+            <span class="tag">★ ${repo.stargazers_count}</span>
+          </article>`).join('') : '<p class="muted">No public repositories found.</p>';
+
+        profileCard.hidden = false;
+        reposCard.hidden = false;
+        statusEl.textContent = 'Live GitHub API data loaded successfully.';
+      }catch(error){
+        statusEl.className = 'error';
+        statusEl.textContent = error.message;
+      }
+    }
+
+    loadBtn.addEventListener('click', loadProfile);
+    usernameInput.addEventListener('keydown', e => { if(e.key === 'Enter') loadProfile(); });
+    loadProfile();
+  </script>
+</body>
+</html>
