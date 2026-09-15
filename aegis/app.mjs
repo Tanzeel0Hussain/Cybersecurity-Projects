@@ -8,6 +8,12 @@ import {
 import { skeleton } from "./render.mjs";
 import { AirDraw } from "./modes/air-draw.mjs";
 import { drawGestureEffect } from "./modes/gesture-effects.mjs";
+import {
+  TouchlessInstrument,
+  musicGesture,
+  renderMusic,
+} from "./modes/music.mjs";
+const instrument = new TouchlessInstrument();
 const drawing = new AirDraw();
 let mode = "hands";
 const $ = (id) => document.getElementById(id);
@@ -45,6 +51,7 @@ function dispose(s) {
 }
 function stop(message = "Camera is off.") {
   drawing.lift();
+  muteMusic();
   const old = session;
   session = null;
   dispose(old);
@@ -127,6 +134,26 @@ function draw(results, s) {
       performance.now(),
       matchMedia("(prefers-reduced-motion: reduce)").matches,
     );
+  if (mode === "music") {
+    const gesture = musicGesture(
+      hands,
+      $("mirror").checked,
+      $("music-scale").value === "pentatonic",
+    );
+    instrument.update(
+      gesture,
+      Number($("music-volume").value) / 100,
+      $("music-tone").value,
+    );
+    renderMusic(ctx, gesture, width, height);
+    $("music-note").textContent = gesture ? gesture.note : "—";
+    $("music-level").value = gesture ? Math.round(gesture.volume * 100) : 0;
+    $("mode-help").textContent = !instrument.enabled
+      ? "Click Enable Sound to play. No microphone needed."
+      : gesture
+        ? "Screen-right hand: raise for higher notes · spread hands for volume."
+        : "Show both hands apart to play. Missing or crossed hands mute the note.";
+  }
   $("hands").textContent = String(hands.length);
   $("fingers").textContent = String(s.smoother.update(total, hands.length));
   $("hand-detail").textContent = details.length
@@ -263,6 +290,7 @@ async function start() {
       : "Tracking hands locally.";
     $("mode-label").textContent = "CAMERA ON";
     $("start").textContent = "Camera Running";
+    $("enable-sound").disabled = mode !== "music";
     s.lastFrame = performance.now();
     watch(s);
     s.frame = requestAnimationFrame((t) => loop(s, t));
@@ -289,6 +317,8 @@ const descriptions = {
   body: "Step back until your full body fits in the camera.",
   draw: "Pinch thumb and index to draw. Release to lift the pen.",
   effects: "Show both hands. Spread them apart, then move them up/down.",
+  music:
+    "Start Camera, then Enable Sound. Screen-right hand controls pitch; hand spacing controls volume.",
 };
 for (const button of document.querySelectorAll("[data-mode]")) {
   button.addEventListener("click", () => {
@@ -299,6 +329,7 @@ for (const button of document.querySelectorAll("[data-mode]")) {
     for (const item of document.querySelectorAll("[data-mode]"))
       item.setAttribute("aria-pressed", String(item === button));
     $("draw-tools").hidden = mode !== "draw";
+    $("music-tools").hidden = mode !== "music";
     $("mode-help").textContent = descriptions[mode];
     if (running) start();
   });
@@ -330,4 +361,34 @@ $("save-art").addEventListener("click", () => {
   link.download = "aegis-air-drawing.png";
   link.href = output.toDataURL("image/png");
   link.click();
+});
+
+function muteMusic() {
+  instrument.close();
+  $("enable-sound").disabled = true;
+  $("enable-sound").textContent = "Enable Sound";
+  $("mute-sound").disabled = true;
+  $("music-note").textContent = "—";
+  $("music-level").value = 0;
+}
+$("enable-sound").addEventListener("click", async () => {
+  if (mode !== "music" || !session) return;
+  const activeSession = session;
+  $("enable-sound").disabled = true;
+  $("mute-sound").disabled = false;
+  $("enable-sound").textContent = "Starting sound…";
+  try {
+    if (await instrument.enable())
+      $("enable-sound").textContent = "Sound Enabled";
+  } catch (error) {
+    if (session !== activeSession || mode !== "music") return;
+    muteMusic();
+    $("enable-sound").disabled = false;
+    $("mode-help").textContent =
+      error.message || "Sound unavailable in this browser.";
+  }
+});
+$("mute-sound").addEventListener("click", () => {
+  muteMusic();
+  $("enable-sound").disabled = !session || mode !== "music";
 });

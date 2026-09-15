@@ -51,6 +51,9 @@
           ><button data-mode="effects" aria-pressed="false">
             04 · Color Portal
           </button>
+          <button data-mode="music" aria-pressed="false">
+            05 · Touchless Music
+          </button>
         </nav>
         <p id="mode-help" role="status">
           Hold your palms toward the camera to count fingers.
@@ -64,6 +67,40 @@
           ><button id="clear-art">Clear</button
           ><button id="save-art">Save PNG</button
           ><small>Drawing only · camera image is never saved</small>
+        </div>
+        <div id="music-tools" hidden>
+          <div class="music-readout">
+            <span>LIVE NOTE</span><strong id="music-note">—</strong
+            ><label
+              >Gesture volume
+              <meter id="music-level" min="0" max="100" value="0"></meter
+            ></label>
+          </div>
+          <label
+            >Playing style
+            <select id="music-scale">
+              <option value="pentatonic">Pentatonic notes</option>
+              <option value="continuous">Theremin glide</option>
+            </select></label
+          >
+          <label
+            >Tone
+            <select id="music-tone">
+              <option value="sine">Soft sine</option>
+              <option value="triangle">Warm triangle</option>
+            </select></label
+          >
+          <label
+            >Master volume
+            <input id="music-volume" type="range" min="0" max="100" value="30"
+          /></label>
+          <button id="enable-sound" disabled>Enable Sound</button
+          ><button id="mute-sound" disabled>Mute</button>
+          <small
+            >Start Camera first. Raise your screen-right hand for higher notes;
+            spread both hands for louder notes. Sound stops when hands
+            disappear, camera stops, or you leave this tab.</small
+          >
         </div>
         <section class="studio" aria-label="Live tracking workspace">
           <div class="camera-panel">
@@ -171,7 +208,7 @@
           <p>
             Download and extract the project ZIP. Install Python 3, then run
             <code>Start-Aegis.bat</code> on Windows or
-            <code>python3 launcher.py</code> on macOS/Linux. The same four modes
+            <code>python3 launcher.py</code> on macOS/Linux. The same five modes
             open in your browser. Internet is required for model assets.
           </p>
           <a

@@ -671,3 +671,68 @@ footer a {
     padding: 12px 5px;
   }
 }
+
+.mode-picker {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+#music-tools:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid #344354;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background: #111c29;
+}
+#music-tools label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+#music-tools select {
+  max-width: 190px;
+}
+#music-tools button {
+  padding: 13px 18px;
+  background: #70e4ef;
+  color: #09121d;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  cursor: pointer;
+}
+#music-tools button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+#music-tools small {
+  flex-basis: 100%;
+  color: #9badc0;
+  line-height: 1.7;
+}
+.music-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 125px;
+}
+.music-readout > span {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #9badc0;
+}
+.music-readout strong {
+  font-size: 32px;
+  color: #b7a0ff;
+}
+@media (max-width: 760px) {
+  .mode-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mode-picker button:last-child {
+    grid-column: 1/-1;
+  }
+}
